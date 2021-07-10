@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "Web",
+			"path": ".."
+		},
+		{
+			"name": "web_study",
+			"path": "..\\Github\\web_study"
+		},
+		{
+			"name": "마이하우스캣",
+			"path": "."
+		}
+	],
+	"settings": {}
+}
