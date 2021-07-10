@@ -1,0 +1,178 @@
+// console.log('popup 실행')
+let customer_id = '';
+
+CAFE24API.init('tgHZp6LCG5KuklqvIYgrtB')
+CAFE24API.getMemberID(function(memberID){
+    // console.log(memberID);
+    if(memberID){
+        CAFE24API.getCustomerInfo(function(err, res) {
+            if (err) {
+                // console.log(err)
+            } else {
+                // console.log(res)
+                alpha_popup(res['customer']);
+            }
+        });
+    }
+});
+
+window.addEventListener('message', function (e) {
+    if(e.origin == 'https://alph.kr'){
+
+        if(e.data.from == 'alpha_popup'){
+            if(e.data.result == 'success'){
+                document.getElementById('alpha_login_popup').style.display = 'block';
+            }
+            
+            if(e.data.result == 'error'){
+                console.log(e.data.message)
+                document.getElementById('alpha_login_popup').style.display = 'none';
+            }
+            
+            if(e.data.result == 'alpha_popup_quick'){
+                let url = 'https://alph.kr/api/front/order_item/get?item_code=' + e.data.data
+                let iframe = document.getElementById('alpha_login_popup')
+                iframe.src = url;
+
+                if(window.innerWidth > 640){
+                    iframe.style.width = '100vw';
+                    iframe.style.height = '100vh';
+                    iframe.style.right = '0';
+                    iframe.style.backgroundColor = 'rgba(0,0,0,0.7)';
+
+
+                }
+                else{
+                    iframe.style.width = '100vw';
+                    iframe.style.height = '100vh';
+                    iframe.style.paddingTop = '10vh';
+                    iframe.style.backgroundColor = 'rgba(0,0,0,0.7)';
+
+                }
+
+                let item = {
+                    'host': window.location.host,
+                    'type': 'reviewer',
+                }
+                iframe.onload = function () {
+                    iframe.contentWindow.postMessage(item, 'https://alph.kr');
+                };
+                
+
+            }
+            
+            if(e.data.result == 'alpha_popup_close_1'){
+                // console.log(customer_id)
+                
+                let local_data = JSON.parse(localStorage.getItem('alpha_popup'));
+
+                if(local_data){
+                    let today = new Date()
+        
+                    let local_data_new = [];
+                    for(let i = 0; i < local_data.length; i++) {
+                        let expired_at = new Date(local_data[i].date);
+                        
+        
+                        if(expired_at.getTime() > today.getTime()){
+                            local_data_new.push(local_data[i])
+                        }
+                        
+                    }
+                    local_data = local_data_new
+                }
+                else{
+                    local_data = [];
+                }
+        
+                let date = new Date();
+                date.setDate(date.getDate() + 1 );
+                
+                let data = {
+                    'date':date,
+                    'customer' : customer_id,
+                    'mall_id' : CAFE24API.MALL_ID,
+                    'shop_no' : CAFE24API.SHOP_NO,
+                }
+                local_data.push(data);
+                localStorage.setItem('alpha_popup',JSON.stringify(local_data));
+                document.getElementById('alpha_login_popup').style.display = 'none';
+                
+            }
+        }
+        else if(e.data.from == 'alpha_reviewer'){
+            switch (e.data.data) {
+                case 'reviewer_close':
+                    document.getElementById('alpha_login_popup').style.display = 'none';
+                    break;
+            }
+        }
+        
+    }
+});
+
+
+
+function alpha_popup(customer){
+    customer_id = customer.member_id;
+    // console.log('popup start');
+    // console.log(customer);
+    
+    let local_data = JSON.parse(localStorage.getItem('alpha_popup'));
+    
+    if(local_data){
+        let local_index = local_data.findIndex(function(data){
+            return data.customer == customer_id && data.mall_id == CAFE24API.MALL_ID;
+        })
+
+        if(local_index > -1){
+            let today = new Date();
+            let expired_at = new Date(local_data[local_index].date);
+            if(expired_at.getTime() > today.getTime()){
+                return 0;
+            }
+        }
+    }
+    
+    
+
+    
+    let iframe2 = document.createElement("iframe");
+    iframe2.style.backgroundColor = 'rgba(0,0,0,0)';
+    iframe2.style.display = 'none';
+    if(window.innerWidth > 640){
+        iframe2.style.width = '340px';
+        iframe2.style.height = '340px';
+        iframe2.style.position = 'fixed';
+        iframe2.style.bottom = '0';
+        iframe2.style.right = '10vw';
+    }
+    else{
+        iframe2.style.width = '100vw';
+        iframe2.style.height = '100vh';
+        iframe2.style.position = 'fixed';
+        iframe2.style.bottom = '0';
+        iframe2.style.left = '0';
+    }
+    
+    iframe2.style.zIndex = '1000';
+    iframe2.style.border = 'none';
+    
+    iframe2.id = 'alpha_login_popup';
+    iframe2.scrolling = 'no';
+    
+    iframe2.src = 'https://alph.kr' + "/api/front/popup?mall_id=" + CAFE24API.MALL_ID + "&shop_no=" + CAFE24API.SHOP_NO + "&customer="+customer.member_id;
+    // console.log( 'https://alph.kr' + "/api/front/popup?mall_id=" + CAFE24API.MALL_ID + "&shop_no=" + CAFE24API.SHOP_NO + "&customer="+customer.member_id )
+    document.body.append(iframe2);
+    iframe2.onload = function () {
+        let item = {
+            'host': window.location.host,
+            'type':'popup',
+            'customer':customer.member_id,
+            'mall_id' : CAFE24API.MALL_ID,
+            'shop_no' : CAFE24API.SHOP_NO,
+            'front_url': window.location.href,
+        };
+        document.getElementById('alpha_login_popup').contentWindow.postMessage(item, 'https://alph.kr');
+    };
+}

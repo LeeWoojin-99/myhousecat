@@ -1,0 +1,35 @@
+alpha_review_count_update();
+function alpha_review_count_update(){
+    let review_counter = $('.alpha_module_count:not([complete="true"])')
+    if(review_counter.length > 0){
+        let value_set = new Set([])
+        let value_array = [];
+        for(let i = 0; i < review_counter.length; i++){
+            let value = review_counter[i].getAttribute('value');
+            value_set.add(value)
+        }
+        
+        value_set.forEach(function(v){value_array.push(v)}); 
+        let url_reviewCounter = 'https://alph.kr/api/module/review/count?test=a&mall_id=' + CAFE24API.MALL_ID + '&shop_no=' + CAFE24API.SHOP_NO + '&product_no=' + value_array.join(',')
+        $.ajax({
+            url: url_reviewCounter,
+            success:function(json){
+                let review_data = json['review_count']
+
+                for(let i = 0; i < review_counter.length; i++){
+                    let value = review_counter[i].getAttribute('value');
+                    review_counter[i].setAttribute('complete','true');
+
+
+                    review_counter[i].innerText = review_data[value].toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    if(review_data[value] != 0 && review_counter[i].parentElement.classList.contains('alpha_module_count_container')){
+                        review_counter[i].parentElement.style.display = 'block'
+                    }
+                }
+            }
+        })
+    }
+    setTimeout(function(){
+        alpha_review_count_update()
+    },250)
+}

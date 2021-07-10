@@ -1,0 +1,47 @@
+$(document).ready(function() {
+    /**
+     * Google Analytics function
+     * @type {*|{init: init, gtag: gtag}}
+     */
+    var GOOGLE_ANALYTICS = GOOGLE_ANALYTICS || {
+
+        gtag: function() {
+            dataLayer.push(arguments);
+        },
+
+        init: function() {
+            const scriptTag = Array.prototype.filter.call(
+                document .getElementsByTagName("script") ,
+                function (e) {return e.src.indexOf("analyticsScriptTag.js") >= 0;}
+            )[0];
+            if (scriptTag.src.indexOf('=') !== -1) {
+                let sAnalyticsCode = scriptTag.src.split('=')[1];
+                sAnalyticsCode = sAnalyticsCode.split('&')[0];
+                GOOGLE_ANALYTICS.installAnalytics(sAnalyticsCode);
+            } else {
+                var sMallId = CAFE24API.MALL_ID;
+                var sShopNo = CAFE24API.SHOP_NO;
+                $.ajax({
+                    url: 'https://google-analytics-search.hanpda.com/getAnalyticsData',
+                    type: 'GET',
+                    data: {
+                        mall_id: sMallId,
+                        shop_no: sShopNo
+                    },
+                    dataType: 'json',
+                    success: function (oResponse) {
+                        GOOGLE_ANALYTICS.installAnalytics(oResponse['trackingCode']);
+                    }
+                });
+            }
+        },
+
+        installAnalytics: function(sAnalyticsCode) {
+            window.dataLayer = window.dataLayer || [];
+            GOOGLE_ANALYTICS.gtag('js', new Date());
+            GOOGLE_ANALYTICS.gtag('config', sAnalyticsCode);
+            $.getScript('https://www.googletagmanager.com/gtag/js?id=' + sAnalyticsCode);
+        }
+    };
+    GOOGLE_ANALYTICS.init();
+});
