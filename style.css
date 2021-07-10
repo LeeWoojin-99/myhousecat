@@ -44,7 +44,7 @@ a{
 
 ul#header_btn{
     position: absolute;
-    right: 40px;
+    right: 10px;
     bottom: 20px;
     float: right;
     list-style-type: none;
@@ -362,3 +362,92 @@ ul.header_sub_menu{
 
 
 /* @@@ @@@ @@@ container @@@ @@@ @@@ */
+/* slide */
+#slide_wrapper{
+    position: relative;
+    width: 100%;
+    height: 460px;
+    margin: 20px 0;
+    background-color: #e5e5e5;
+}
+.slide{
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.7s;
+    z-index: 4;
+    /* 
+    slide z-index : 4
+    btn z-index : 5
+    */
+}
+.slide a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    background-position: center 0;
+}
+.slide.active{
+    opacity: 1;
+    visibility: visible;
+}
+/* slide index 버튼 */
+#slide_index_btn_wrapper{
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+.slide_index_btn{
+    float: left;
+    margin: 0 4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.35s ease;
+}
+.slide_index_btn:hover{
+    /* test code */
+    background-color: rgb(255, 179, 179)
+}
+.slide_index_btn.active{
+    /* 표시되고 있는 slide의 버튼이 변함 */
+    width: 34px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 9px;
+}
+/* slide 이전, 다음 버튼 */
+#slide_next_btn, #slide_prev_btn{
+    position: absolute;
+    width: 29px;
+    height: 47px;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#slide_next_btn:hover, #slide_prev_btn:hover{
+    background-color: rgb(226, 106, 106);
+}
+#slide_next_btn{
+    left: 50%;
+    transform: translateX(600px);
+    background-image: url(./images/btn_visual_next.gif);
+}
+#slide_prev_btn{
+    right: 50%;
+    transform: translateX(-600px);
+    background-image: url(./images/btn_visual_prev.gif);
+}
+#slide_next_btn
