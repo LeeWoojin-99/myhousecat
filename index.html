@@ -4,8 +4,157 @@
     <meta charset="UTF-8">
     <title>마이하우스캣</title>
     <script src="jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
 </head>
 <body>
+    <div id="header">
+        <div id="header_top">
+            <div id="header_logo">
+                <a href="index.html">
+                    <img src="./images/logo.png" alt="">
+                </a>
+            </div>
+            <ul id="header_btn">
+                <li id="search_btn_wrapper" onclick="product_search_on();">
+                    <div class="search_circle"></div>
+                    <div class="line"></div>
+                </li>
+                <li id="menu_btn_wrapper" onclick="right_menu_panel_on();">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="header_menu">
+            <ul>
+                <li><a href="">문구/도서</a>
+                    <ul class="header_sub_menu">
+                        <li><a href="">노트</a></li>
+                        <li><a href="">도서</a></li>
+                        <li><a href="">마스킹 테이프</a></li>
+                        <li><a href="">메모지</a></li>
+                        <li><a href="">봉투</a></li>
+                        <li><a href="">스티커</a></li>
+                        <li><a href="">엽서</a></li>
+                        <li><a href="">테이프</a></li>
+                    </ul>
+                </li>
+                <li><a href="">디지털</a>
+                    <ul class="header_sub_menu">
+                        <li><a href="">그립톡</a></li>
+                        <li><a href="">마우스패드</a></li>
+                        <li><a href="">무선이어폰 케이스</a></li>
+                        <li><a href="">휴대폰 케이스</a></li>
+                    </ul>
+                </li>
+                <li><a href="">악세사리/잡화</a>
+                    <ul class="header_sub_menu">
+                        <li><a href="">거울</a></li>
+                        <li><a href="">귀걸이/목걸이</a></li>
+                        <li><a href="">반지/팔찌</a></li>
+                        <li><a href="">키링/팬던트/배지</a></li>
+                        <li><a href="">트레이/홀더</a></li>
+                        <li><a href="">에코백/파우치/지갑</a></li>
+                        <li><a href="">마스크</a></li>
+                    </ul>
+                </li>
+                <li><a href="">인테리어</a>
+                    <ul class="header_sub_menu">
+                        <li><a href="">인센스홀더/화병</a></li>
+                        <li><a href="">인형/피규어</a></li>
+                        <li><a href="">포스터</a></li>
+                        <li><a href="">페인팅</a></li>
+                    </ul>
+                </li>
+                <li><a href="">생활용품</a>
+                    <ul class="header_sub_menu">
+                        <li><a href="">그릇</a></li>
+                        <li><a href="">수저받침</a></li>
+                        <li><a href="">안경닦이</a></li>
+                        <li><a href="">잔/컵/텀블러</a></li>
+                    </ul>
+                </li>
+                <li><a href="">고양이꼬양</a>
+                    <ul class="header_sub_menu">
+                        <li><a href="">매트</a></li>
+                        <li><a href="">모자</a></li>
+                        <li><a href="">식기</a></li>
+                        <li><a href="">세정용품</a></li>
+                    </ul>
+                </li>
+                <li><a href="">작가별</a></li>
+                <li><a href="">COMMUNITY</a>
+                    <ul class="header_sub_menu">
+                        <li><a href="">공지사항</a></li>
+                        <li><a href="">상품 사용후기</a></li>
+                        <li><a href="">상품 Q&A</a></li>
+                        <li><a href="">갤러리</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div id="right_menu_panel">
+        <div class="x_btn" onclick="right_menu_panel_off();">
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <ul>
+            <li><a href="">LOGIN</a></li>
+            <li><a href="">JOIN US</a></li>
+            <li><a href="">MY SHOPPING</a></li>
+            <li><a href="">ORDER</a></li>
+            <li><a href="">WISH</a></li>
+            <li><a href="">CART</a></li>
+        </ul>
+        <hr size="1px" width="60%" color="#EFEFEF" align="center" style="display: inline-block;">
+        <div>
+            <p class="title">CUSTOMER CENTER</p>
+            <p class="strong">1877-9502</p>
+            <p class="content">평일 오전 10시부터 오후 6시까지<br>주말, 공휴일 휴무</p>
+        </div>
+        <hr size="1px" width="60%" color="#EFEFEF" align="center" style="display: inline-block;">
+        <div>
+            <p class="title">BANK INFO</p>
+            <p class="content">기업은행 434-132652-01-012<br>예금주 : (주)두터울</p>
+        </div>
+        <ul class="footer_menu">
+            <li><a href="">AGREEMENT</a></li>
+            <li><a href="">PRIVACY POLICY</a></li>
+            <li><a href="">GUIDE</a></li>
+        </ul>
+        <p style="display: block; font-size: 10px; font-family:'S-Core Dream 4'; color: #777;">©(주)두터울 ALL RIGHTS RESERVED.</p>
+    </div>
+
+    <div id="product_search_wrapper" class="opacity_off">
+        <div id="product_search">
+            <p class="title">PRODUCT SEARCH</p>
+            <fieldset>
+                <legend>검색</legend>
+                <input type="text" id="keyword" name="keyword">
+                <div id="product_search_btn">
+                    <div class="circle"></div>
+                    <div class="line"></div>
+                </div>
+            </fieldset>
+            <div id="popular_keyword">
+                <span>인기 검색어 : </span>
+                <a href="">폰케이스</a>
+                <div class="line"></div>
+                <a href="">악세사리</a>
+            </div>
+        </div>
+        <div id="product_search_bg" onclick="product_search_off();"></div>
+    </div>
+
     
+    <div id="container"></div>
+
+    <div id="footer"></div>
 </body>
 </html>

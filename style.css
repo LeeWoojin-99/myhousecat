@@ -1,1 +1,362 @@
-css
+*{
+    padding: 0;
+    margin: 0;
+    font: 0.75em Verdana,Dotum,AppleGothic,sans-serif;
+}
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+/* @@@ @@@ @@@ header @@@ @@@ @@@ */
+#header{
+    width: 100%;
+    height: 240px;
+    margin: 0 auto;
+}
+
+#header_top{
+    /* 헤더의 로고와 버튼이 들어가는 공간 header_top */
+    max-width: 1100px;
+    height: 150px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+/* logo, btn */
+#header_logo{
+    position: absolute;
+    left: 50%;
+    transform: translate(-90px);
+    bottom: 20px;
+    width: 180px;
+    height: 70px;
+    margin: 0 auto;
+}
+#header_logo a img{
+    height: 100%;
+}
+
+ul#header_btn{
+    position: absolute;
+    right: 40px;
+    bottom: 20px;
+    float: right;
+    list-style-type: none;
+}
+#header_btn li{
+    float: left;
+    width: 30px;
+    height: 30px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+li#search_btn_wrapper{
+    position: relative;
+    right: 5px;
+}
+li#search_btn_wrapper .search_circle{
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #505050;
+}
+li#search_btn_wrapper .line{
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    width: 7px;
+    height: 2px;
+    transform: rotate(45deg);
+    background-color: #505050;
+}
+li#menu_btn-wrapper{}
+li#menu_btn_wrapper .line{
+    position: relative;
+    left: 6px;
+    top: 7px;
+    background-color: #505050;
+    margin-bottom: 5px;
+    width: 18px;
+    height: 2px;
+    border-radius: 100px;
+}
+
+/* menu panel */
+#right_menu_panel{
+    position: fixed;
+    display: block;
+    top: 0;
+    right: -700px;
+    width: 340px;
+    height: 100%;
+    z-index: 11;
+    background-color: rgba(255, 255, 255, 1);
+    transition: all ease 0.6s;
+    border-left: 1px solid #EFEFEF;
+    text-align: center;
+}
+#right_menu_panel .x_btn{
+    position: absolute;
+    right: 40px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+#right_menu_panel .x_btn .line{
+    width: 30px;
+    height: 3px;
+    background-color: #427f51;
+    position: absolute;
+    top: 13px;
+    left: 0px;
+}
+#right_menu_panel .x_btn .line:nth-child(1){
+    transform: rotate(45deg);
+}
+#right_menu_panel .x_btn .line:nth-child(2){
+    transform: rotate(-45deg);
+}
+#right_menu_panel>ul{
+    margin-top: 70px;
+}
+#right_menu_panel>ul>li{
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    text-align: center;
+}
+#right_menu_panel>ul>li>a{
+    display: inline-block;
+    font-size: 15px;
+    font-family: "S-Core Dream 4";
+    list-style: 30px;
+}
+#right_menu_panel .title{
+    font-size: Large;
+    color: #427F51;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+#right_menu_panel .strong{
+    font-size: Large;
+    color: black;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+#right_menu_panel .content{
+    font-size: 14px;
+    font-family: "S-Core Dream 3";
+    line-height: 20px;
+}
+#right_menu_panel hr{
+    margin: 20px 0;
+}
+#right_menu_panel ul.footer_menu{
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 60px;
+}
+#right_menu_panel .footer_menu li{
+    float: left;
+    margin: 0 5px;
+}
+#right_menu_panel .footer_menu li a{
+    font-size: 11px;
+    color: #777;
+    letter-spacing: 1px;
+}
+
+/* product search */
+#product_search_wrapper{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+#product_search{
+    display: inline-block;
+    position: relative;
+    width: 780px;
+    top: 35%;
+    z-index: 14; /* #product_search_bg z-index: 13; */
+}
+#product_search_wrapper #product_search fieldset{
+    width: 100%;
+    border: 0;
+    position: relative;
+}
+#product_search_wrapper fieldset legend{
+    display: none;
+}
+#product_search_wrapper fieldset input#keyword{
+    width: 100%;
+    height: 55px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    border: 3px solid #222;
+    padding: 0;
+}
+#product_search_btn{
+    width: 55px;
+    height: 55px;
+    background-color: #222;
+    position: absolute;
+    right: -3px;
+    top: 3px;
+    cursor: pointer;
+}
+#product_search_btn .circle{
+    position: absolute;
+    left: 17px;
+    top: 17px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+#product_search_btn .line{
+    position: absolute;
+    left: 29px;
+    top: 34px;
+    width: 10px;
+    height: 2px;
+    transform: rotate(45deg);
+    background-color: white;
+}
+#product_search_wrapper .title{
+    letter-spacing: 3px;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+#popular_keyword{
+    color: white;
+    font-size: 24px;
+    margin-top: 20px;
+}
+#popular_keyword a{
+    color: white;
+}
+#popular_keyword .line{
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background-color: #fff;
+}
+#product_search_bg{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 13; /* #product_search z-index: 14; */
+}
+@keyframes fade_in{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@keyframes fade_out{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+
+/* menu */
+.header_menu{
+    width: 100%;
+    height: 90px;
+    border-top: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
+}
+.header_menu ul{
+    text-align: center;
+}
+.header_menu>ul>li{
+    display: inline-block;
+    position: relative;
+    height: 70px;
+}
+.header_menu>ul>li>a{
+    display: block;
+    height: 70px;
+    line-height: 70px;
+    font-family: 'S-Core Dream 5';
+    font-size: 17px;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: black;
+    letter-spacing: 1px;
+}
+
+/* sub menu */
+ul.header_sub_menu{
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    list-style-type: none;
+    border-top: 2px solid black;
+    z-index: 10;
+}
+.header_menu>ul>li:hover .header_sub_menu{
+    display: block;
+}
+.header_sub_menu::before{
+    /* sub menu 상단의 화살표와 가로선 */
+    content: "";
+    display: block;
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    margin-left: -7px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #000;
+}
+.header_sub_menu li{
+    margin-top: 1px;
+}
+.header_sub_menu li a{
+    display: block;
+    width: 150px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    font-family: 'S-Core Dream 4';
+    font-size: 12px;
+
+}
+.header_sub_menu li a:hover{
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #85D6FC;
+}
+
+
+/* @@@ @@@ @@@ container @@@ @@@ @@@ */
