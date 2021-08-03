@@ -1,26 +1,19 @@
-function right_menu_panel_on(){
-    // var target = document.getElementById("right_menu_panel");
-    // target.style.transform = "translateX(-700px)";
-    var target = $('#right_menu_panel');
-    target.css('transform', 'translateX(-700px)');
-}
-function right_menu_panel_off(){
-    // var target = document.getElementById("right_menu_panel");
-    // target.style.transform = "translateX(700px)";
-    var target = $('#right_menu_panel');
-    target.css('transform', 'translateX(700px)');
-}
-function product_search_on(){
-    // var target = document.getElementById("product_search_wrapper");
-    // target.style.opacity = "1";
-    // target.style.visibility = 'visible';
-    var target = $('#product_search_wrapper');
-    target.css('opacity', '1').css('visibility', 'visible');
-}
-function product_search_off(){
-    // var target = document.getElementById("product_search_wrapper");
-    // target.style.opacity = "0";
-    // target.style.visibility = 'hidden';
-    var target = $('#product_search_wrapper');
-    target.css('opacity', '0').css('visibility', 'hidden');
-}
+$(document).ready(function(){
+    
+    $("#search_btn_wrapper").click(function(){
+        $("#right_menu_panel").css("transform", "translateX(-700px)");
+    })
+    $("#right_menu_panel > .x_btn").click(function(){
+        $('#right_menu_panel').css('transform', 'translateX(700px)');
+    })
+
+
+    $("#menu_btn_wrapper").click(function(){
+        $('#product_search_wrapper').css('opacity', '1').css('visibility', 'visible');
+    })
+    $("#product_search_bg").click(function(){
+        $('#product_search_wrapper').css('opacity', '0').css('visibility', 'hidden');
+    })
+    
+
+})

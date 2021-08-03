@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./XEIcon-2.2.0/xeicon.min.css">
     <script src="main.js"></script>
+    <script src="slide.js"></script>
 </head>
 <body>
     <div id="header">
@@ -18,11 +19,11 @@
                 </a>
             </div>
             <ul id="header_btn">
-                <li id="search_btn_wrapper" onclick="product_search_on();">
+                <li id="search_btn_wrapper">
                     <div class="search_circle"></div>
                     <div class="line"></div>
                 </li>
-                <li id="menu_btn_wrapper" onclick="right_menu_panel_on();">
+                <li id="menu_btn_wrapper">
                     <div class="line"></div>
                     <div class="line"></div>
                     <div class="line"></div>
@@ -100,7 +101,7 @@
     </div>
 
     <div id="right_menu_panel">
-        <div class="x_btn" onclick="right_menu_panel_off();">
+        <div class="x_btn">
             <div class="line"></div>
             <div class="line"></div>
         </div>
@@ -149,28 +150,18 @@
                 <a href="">악세사리</a>
             </div>
         </div>
-        <div id="product_search_bg" onclick="product_search_off();"></div>
+        <div id="product_search_bg"></div>
     </div>
 
     <div id="container">
         <div id="slide_wrapper">
             <div id="slide_index_btn_wrapper">
-                <div class="slide_index_btn" data-slide_index="0" onclick="slide.btn_click(this);"></div>
-                <div class="slide_index_btn" data-slide_index="1" onclick="slide.btn_click(this);"></div>
-                <div class="slide_index_btn" data-slide_index="2" onclick="slide.btn_click(this);"></div>
-                <div class="slide_index_btn" data-slide_index="3" onclick="slide.btn_click(this);"></div>
-                <div class="slide_index_btn" data-slide_index="4" onclick="slide.btn_click(this);"></div>
+                <!-- .slide_index_btn이 들어가는 공간 -->
             </div>
-            <div id="slide_next_btn" onclick="slide.next();"></div>
-            <div id="slide_prev_btn" onclick="slide.prev();"></div>
-            <div class="slide"><a href="" style="background-image: url(./images/slide_images/1.png);"></a></div>
-            <div class="slide"><a href="" style="background-image: url(./images/slide_images/2.png);"></a></div>
-            <div class="slide"><a href="" style="background-image: url(./images/slide_images/3.png);"></a></div>
-            <div class="slide"><a href="" style="background-image: url(./images/slide_images/4.png);"></a></div>
-            <div class="slide"><a href="" style="background-image: url(./images/slide_images/5.png);"></a></div>
+            <div id="slide_next_btn"></div>
+            <div id="slide_prev_btn"></div>
+            <!-- .slide가 들어가는 공간 -->
         </div>
-
-        
     </div>
 
     <div id="footer">
@@ -209,6 +200,5 @@
             </div>
         </div>
     </div>
-    <script src="slide.js"></script>
 </body>
 </html>
