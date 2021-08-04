@@ -10,7 +10,7 @@ $(document).ready(function(){
         // 슬라이드로 사용할 이미지 파일의 이름을 담은 slide.json의 데이터를 가져오기 위해서 fetch를 이용
         return response.json();
     }).then(function(json_data){ 
-        console.log(json_data); // [1,2,3,4,5,7]
+        // console.log(json_data); // [1,2,3,4,5,7] TEST
 
         var index_button_tags = ""; // #slide_index_btn_wrapper의 .slide_index_btn을 구성할 tag들이 담기는 변수
         var slide_tags = ""; // #sldie_wrapper의 .slide를 구성할 tag들이 담기는 변수
@@ -21,7 +21,7 @@ $(document).ready(function(){
 
             // slide를 만드는 과정
             slide_tags += "<div class=\"slide\"><a href=\"\" style=\"background-image: url(./images/slide_images/" + json_data[i] + ".png);\"></a></div>\n";
-            console.log("test" + json_data[i]);
+            // console.log("test" + json_data[i]); // TEST
         }
 
         $("#slide_index_btn_wrapper").html(index_button_tags);
@@ -69,7 +69,7 @@ $(document).ready(function(){
                 this.index_process(Number(self.dataset.slide_index));
                 this.active(this.curr_index);
                 slide_timer = setInterval(function(){slide.next();},slide_timer_time);
-                console.log("btn_clickk" + self.dataset.slide_index)
+                // console.log("bt_clickk" + self.dataset.slide_index) // TEST
             },
             index_process : function(current_index){
                 // 인덱스를 입력하면 이전, 현재, 다음 인덱스를 계산해주는 메서드
