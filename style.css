@@ -11,6 +11,19 @@ a{
     color: black;
 }
 
+@font-face {
+    font-family: 'Yoon® 민국';
+    src: url(./font/YoonMingukR.otf) format("opentype");
+}
+@font-face {
+    font-family: '"S-Core Dream 4"';
+    src: url(./font/SCDream4.otf) format("opentype");
+}
+@font-face {
+    font-family: '"S-Core Dream 5"';
+    src: url(./font/SCDream5.otf) format("opentype");
+}
+
 
 /* @@@ @@@ @@@ header @@@ @@@ @@@ */
 #header{
